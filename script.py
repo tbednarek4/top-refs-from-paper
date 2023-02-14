@@ -1,6 +1,18 @@
 import requests
 from collections import Counter
 from prettytable import PrettyTable
+from bs4 import BeautifulSoup
+
+def download_pdf(doi_link):
+  response = requests.get(f'https://sci-hub.ru/{doi_link}')
+  soup = BeautifulSoup(response.content, 'lxml')
+  papers = soup.find_all('embed')[0].get('src').rsplit('#', 1)[0]
+
+  with open('temp.pdf', 'wb') as f:
+      f.write(requests.get(f'https://sci-hub.ru/{papers}').content)
+      return True
+    
+  return False
 
 def get_references(doi_link):
   response = requests.get(f'https://api.crossref.org/works/{doi_link}')
