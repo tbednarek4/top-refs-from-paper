@@ -48,9 +48,3 @@ def get_most_popular_refs(first_link):
   
   print(my_table)
   pass
-
-if __name__ == '__main__':
-  test_link_01 = '10.1002/anie.202013801'
-  test_link_02 = '10.1021/acscatal.8b02371'
-  # get_most_popular_refs(test_link_01) 
-  get_most_popular_refs(test_link_02)
