@@ -59,7 +59,7 @@ def get_most_popular_refs(first_link):
   my_table.field_names = ["Count", "DOI", "Title"]
 
   for doi, count in res[:50]:
-    title = get_titles(doi)
+    title = get_title(doi)
     my_table.add_row([count, doi, title])
   
   print(my_table)
