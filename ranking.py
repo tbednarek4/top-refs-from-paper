@@ -43,24 +43,6 @@ def cleanhtml(raw_html):
   cleantext = re.sub(CLEANR, '', raw_html)
   return cleantext
 
-def get_pdf(doi_link, filename):
-  response = None
-
-  try:
-    response = requests.get(f'https://api.crossref.org/works/{doi_link}')
-  except TimeoutError:
-    print(f'Timeout for {doi_link}')
-    sleep(60)
-    return get_pdf(doi_link, filename)
-
-  soup = BeautifulSoup(response.content, 'lxml')
-  papers = soup.find_all('embed')[0].get('src').rsplit('#', 1)[0]
-  
-  with open(filename, 'wb') as f:
-    f.write(requests.get(f'https://sci-hub.ru/{papers}').content)
-    return True
-  return False
-
 def get_references(doi_link):
   response = None
 
