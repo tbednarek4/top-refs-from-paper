@@ -119,7 +119,7 @@ def get_ranking(temp_set, depth, previous_list=[]):
     pass  
 
 if __name__ == '__main__':
-  parser = argparse.ArgumentParser(description='Process some integers.')
+  parser = argparse.ArgumentParser(description='Get the ranking of the references from a given paper until {depth}')
   parser.add_argument('--doi', type=str, help='DOI link input', required=True)
   parser.add_argument('--depth', type=int, help='Depth of the ranking', required=True)
   args = parser.parse_args()
