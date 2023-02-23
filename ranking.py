@@ -55,7 +55,9 @@ def get_references(doi_link):
     if flag: 
       flag = False
       return get_references(doi_link)
-    else: exit()
+    else: 
+      print('Critical error: shutting down the script!')
+      exit()
 
   output = None
 
@@ -83,7 +85,9 @@ def get_title(doi_link):
     if flag: 
       flag = False
       return get_references(doi_link)
-    else: exit()
+    else: 
+      print('Critical error: shutting down the script!')
+      exit()
 
   try: 
     output = cleanhtml(response.json().get('message', {}).get('title')[0])
@@ -93,7 +97,7 @@ def get_title(doi_link):
 
   return output
 
-def get_ranking(temp_set, depth, previous_list=[]):
+def get_ranking(temp_set, depth, length, previous_list=[]):
   next_list = []
   for link in temp_set:
     temp = get_references(link)
@@ -101,16 +105,18 @@ def get_ranking(temp_set, depth, previous_list=[]):
     else: print(f'References not found for {link}')
 
   next_set = set(next_list)
+  previous_set = set(previous_list)
+  next_set -= previous_set
   next_list.extend(previous_list)
 
   if depth > 1:
-    get_ranking(next_set, depth - 1, next_list)
+    get_ranking(next_set, depth - 1, length, next_list)
   else:
     res = Counter(next_list).most_common()
     my_table = PrettyTable()
     my_table.field_names = ["Count", "DOI", "Title"]
 
-    for doi, count in res[:100]:
+    for doi, count in res[:length]:
       title = get_title(doi)
       if title: my_table.add_row([count, doi, title])
 
@@ -122,9 +128,10 @@ if __name__ == '__main__':
   parser = argparse.ArgumentParser(description='Get the ranking of the references from a given paper until {depth}')
   parser.add_argument('--doi', type=str, help='DOI link input', required=True)
   parser.add_argument('--depth', type=int, help='Depth of the ranking', required=True)
+  parser.add_argument('--length', type=int, help='Length of the ranking', required=True)
   args = parser.parse_args()
 
   temp_set = set([args.doi])
-  get_ranking(temp_set, args.depth)
+  get_ranking(temp_set, args.depth, args.length)
   after = perf_counter()
   print(f"\nExecution time: {after - before} s\n")
