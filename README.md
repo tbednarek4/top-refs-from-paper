@@ -4,7 +4,7 @@ Quick and simple Python script processing the most cited `length` references fro
 # Usage
 Download the `ranking.py` script and run it in Windows Powershell via the below command:
 ```
-python ranking.py --doi {string DOI} --depth {int depth} --length {int length}
+python ranking.py --doi {*str* DOI} --depth {*int* depth} --length {*int* length}
 ```
 For example:
 ```
