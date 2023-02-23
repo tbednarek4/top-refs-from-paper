@@ -3,10 +3,10 @@ Quick and simple Python script processing the most cited `length` references fro
 
 # Usage
 Download the `ranking.py` script and run it in Windows Powershell via the below command:
-```
-python ranking.py --doi {*str* DOI} --depth {*int* depth} --length {*int* length}
-```
+<pre>
+python ranking.py --doi {<i>str</i> DOI} --depth {<i>int</i> depth} --length {<i>int</i> length}
+</pre>
 For example:
-```
+<pre>
 python ranking.py --doi https://doi.org/10.1016/j.susc.2005.05.030 --depth 3 --length 100
-```
+</pre>
