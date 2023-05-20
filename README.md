@@ -12,4 +12,4 @@ python ranking.py --doi https://doi.org/10.1016/j.susc.2005.05.030 --depth 3 --l
 </pre>
 
 # Usage on the Google Colab notebook
-Just click the following badge linking to the `example.ipynb` notebook showing the functionality.
+Just click the following badge {{ badge https://github.com/tbednarek4/top-refs-from-paper/edit/main/example.ipynb }} linking to the `example.ipynb` notebook showing the functionality.
