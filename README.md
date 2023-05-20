@@ -1,5 +1,5 @@
 # top-refs-from-paper
-Quick and simple Python script processing the most cited `length` references from the `depth` generation of the citation tree using the Crossref API.
+Quick and simple Python script processing the most cited `length` references from the `depth` generation of the citation tree of a given paper (via `DOI`) using the Crossref API.
 
 # Usage
 Download the `ranking.py` script and run it via the below command:
