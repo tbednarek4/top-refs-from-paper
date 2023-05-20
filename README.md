@@ -4,7 +4,7 @@ Quick and simple Python script processing the most cited `length` references fro
 # Usage
 Download the `ranking.py` script and run it via the below command:
 <pre>
-python ranking.py --doi {<i>str</i> DOI} --depth {<i>int</i> depth} --length {<i>int</i> length}
+python ranking.py --doi {<i>string</i> DOI} --depth {<i>integer</i> depth} --length {<i>integer</i> length}
 </pre>
 For example:
 <pre>
